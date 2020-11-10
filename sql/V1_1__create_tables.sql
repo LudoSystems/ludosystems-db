@@ -2,14 +2,16 @@
 
 CREATE TABLE ludobaum.node(
     id SERIAL UNIQUE,
+    pos_x INT NOT NULL,
+    pos_y INT NOT NULL,
 
     PRIMARY KEY(id)
 );
 
 CREATE TABLE ludobaum.arrow(
     id SERIAL UNIQUE,
-    tail_node_id INT,
-    head_node_id INT,
+    tail_node_id INT NOT NULL,
+    head_node_id INT NOT NULL,
 
     PRIMARY KEY(id),
     CONSTRAINT fk_tail_node
@@ -22,14 +24,14 @@ CREATE TABLE ludobaum.arrow(
 
 CREATE TABLE ludobaum.attribute_list(
     id SERIAL UNIQUE,
-    name VARCHAR(255),
+    name VARCHAR(255) NOT NULL,
 
     PRIMARY KEY(id)
 );
 
 CREATE TABLE ludobaum.attribute_list_element(
     id SERIAL UNIQUE,
-    list_id INT,
+    list_id INT NOT NULL,
     text VARCHAR(4095),
 
     PRIMARY KEY(id),
@@ -40,9 +42,10 @@ CREATE TABLE ludobaum.attribute_list_element(
 
 CREATE TABLE ludobaum.node_attribute(
     id SERIAL UNIQUE,
-    node_id INT,
-    attribute_type VARCHAR(31), 
-    name VARCHAR(255),
+    node_id INT NOT NULL,
+    attribute_type VARCHAR(31) NOT NULL, 
+    sort_order INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
     text VARCHAR(4095),
     number INT,
     list_id INT,
