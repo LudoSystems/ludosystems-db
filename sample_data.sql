@@ -15,26 +15,22 @@ WITH node_1 AS (
     INSERT INTO ludobaum.node(pos_x, pos_y)
         VALUES (75, 10)
     RETURNING id AS id
-), arrow_1 AS (
-    INSERT INTO ludobaum.arrow(tail_node_id, head_node_id)
+), node_connection_1 AS (
+    INSERT INTO ludobaum.node_connection(tail_node_id, head_node_id)
         SELECT node_1.id, node_2.id 
         FROM node_1, node_2
-    RETURNING id AS id
-), arrow_2 AS (
-    INSERT INTO ludobaum.arrow(tail_node_id, head_node_id)
+), node_connection_2 AS (
+    INSERT INTO ludobaum.node_connection(tail_node_id, head_node_id)
         SELECT node_1.id, node_3.id 
         FROM node_1, node_3
-    RETURNING id AS id
-), arrow_3 AS (
-    INSERT INTO ludobaum.arrow(tail_node_id, head_node_id)
+), node_connection_3 AS (
+    INSERT INTO ludobaum.node_connection(tail_node_id, head_node_id)
         SELECT node_2.id, node_4.id 
         FROM node_2, node_4
-    RETURNING id AS id
-), arrow_4 AS (
-    INSERT INTO ludobaum.arrow(tail_node_id, head_node_id)
+), node_connection_4 AS (
+    INSERT INTO ludobaum.node_connection(tail_node_id, head_node_id)
         SELECT node_4.id, node_3.id 
         FROM node_4, node_3
-    RETURNING id AS id
 ), character_list AS (
     INSERT INTO ludobaum.attribute_list (name)
         VALUES('Character')

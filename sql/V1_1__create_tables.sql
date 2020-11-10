@@ -8,7 +8,7 @@ CREATE TABLE ludobaum.node(
     PRIMARY KEY(id)
 );
 
-CREATE TABLE ludobaum.arrow(
+CREATE TABLE ludobaum.node_connection(
     id SERIAL UNIQUE,
     tail_node_id INT NOT NULL,
     head_node_id INT NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE ludobaum.node_attribute(
 );
 
 ALTER TABLE ludobaum.node OWNER TO ludobaum;
-ALTER TABLE ludobaum.arrow OWNER TO ludobaum;
+ALTER TABLE ludobaum.node_connection OWNER TO ludobaum;
 ALTER TABLE ludobaum.attribute_list OWNER TO ludobaum;
 ALTER TABLE ludobaum.attribute_list_element OWNER TO ludobaum;
 ALTER TABLE ludobaum.node_attribute OWNER TO ludobaum;
