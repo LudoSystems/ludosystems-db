@@ -6,7 +6,7 @@ WITH node_1 AS (
 ), node_2 AS (
     INSERT INTO ludobaum.node(pos_x, pos_y)
         VALUES (50, 10)
-    RETURNING id AS id
+    RETURNING id AS idU
 ), node_3 AS (
     INSERT INTO ludobaum.node(pos_x, pos_y)
         VALUES(50, 40)
@@ -36,13 +36,13 @@ WITH node_1 AS (
         VALUES('Character')
     RETURNING id AS id
 ), npc AS (
-    INSERT INTO ludobaum.attribute_list_element(list_id, text)
-        SELECT character_list.id, 'Player'
+    INSERT INTO ludobaum.attribute_list_element(list_id, text, sort_order)
+        SELECT character_list.id, 'Player', 0
         FROM character_list 
     RETURNING id AS id
 ), pc AS (
-    INSERT INTO ludobaum.attribute_list_element(list_id, text)
-        SELECT character_list.id, 'NPC'
+    INSERT INTO ludobaum.attribute_list_element(list_id, text, sort_order)
+        SELECT character_list.id, 'NPC', 1
         FROM character_list
     RETURNING id AS id
 ), node_1_attribute_1 AS (

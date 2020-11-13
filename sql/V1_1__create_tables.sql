@@ -16,10 +16,10 @@ CREATE TABLE ludobaum.node_connection(
     PRIMARY KEY(id),
     CONSTRAINT fk_tail_node
         FOREIGN KEY(tail_node_id)
-            REFERENCES ludobaum.node(id),
+            REFERENCES ludobaum.node(id) ON DELETE CASCADE,
     CONSTRAINT fk_head_node
         FOREIGN KEY(head_node_id)
-            REFERENCES ludobaum.node(id)
+            REFERENCES ludobaum.node(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ludobaum.attribute_list(
@@ -33,11 +33,12 @@ CREATE TABLE ludobaum.attribute_list_element(
     id SERIAL UNIQUE,
     list_id INT NOT NULL,
     text VARCHAR(4095),
+    sort_order INT NOT NULL,
 
     PRIMARY KEY(id),
     CONSTRAINT fk_list_id
         FOREIGN KEY(list_id)
-            REFERENCES ludobaum.attribute_list(id)
+            REFERENCES ludobaum.attribute_list(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ludobaum.node_attribute(
@@ -54,7 +55,7 @@ CREATE TABLE ludobaum.node_attribute(
     PRIMARY KEY(id),
     CONSTRAINT fk_node_id
         FOREIGN KEY(node_id)
-            REFERENCES ludobaum.node(id),
+            REFERENCES ludobaum.node(id) ON DELETE CASCADE,
     CONSTRAINT fk_list_id
         FOREIGN KEY(list_id)
             REFERENCES ludobaum.attribute_list(id),
