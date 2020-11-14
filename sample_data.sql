@@ -6,7 +6,7 @@ WITH node_1 AS (
 ), node_2 AS (
     INSERT INTO ludobaum.node(pos_x, pos_y)
         VALUES (50, 10)
-    RETURNING id AS idU
+    RETURNING id AS id
 ), node_3 AS (
     INSERT INTO ludobaum.node(pos_x, pos_y)
         VALUES(50, 40)
