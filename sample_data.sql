@@ -1,19 +1,27 @@
--- Inserts a very basic graph into the database. 
-WITH node_1 AS (
-    INSERT INTO ludobaum.node(pos_x, pos_y)
-        VALUES (25, 25)
+-- Inserts test sample data into the database including a user with username "user" and password "password"
+WITH user_1 AS (
+    INSERT INTO ludobaum.ludobaum_user(name, password, email, role)
+        VALUES ('user', '$2a$10$uPzOqRF6BcLJpQxmoAkkFeEKISs7hb24AqYXnHF1.Cw0I2kqzvbQy', 'test@example.com', 'USER')
+    RETURNING id AS id
+),node_1 AS (
+    INSERT INTO ludobaum.node(user_id, pos_x, pos_y)
+        SELECT user_1.id, 25, 25
+        FROM user_1
     RETURNING id AS id
 ), node_2 AS (
-    INSERT INTO ludobaum.node(pos_x, pos_y)
-        VALUES (50, 10)
+    INSERT INTO ludobaum.node(user_id, pos_x, pos_y)
+        SELECT user_1.id, 50, 10
+        FROM user_1
     RETURNING id AS id
 ), node_3 AS (
-    INSERT INTO ludobaum.node(pos_x, pos_y)
-        VALUES(50, 40)
+    INSERT INTO ludobaum.node(user_id, pos_x, pos_y)
+        SELECT user_1.id, 50, 40
+        FROM user_1
     RETURNING id AS id
 ), node_4 AS (
-    INSERT INTO ludobaum.node(pos_x, pos_y)
-        VALUES (75, 10)
+     INSERT INTO ludobaum.node(user_id, pos_x, pos_y)
+        SELECT user_1.id, 75, 10
+        FROM user_1
     RETURNING id AS id
 ), node_connection_1 AS (
     INSERT INTO ludobaum.node_connection(tail_node_id, head_node_id)
@@ -32,8 +40,9 @@ WITH node_1 AS (
         SELECT node_4.id, node_3.id 
         FROM node_4, node_3
 ), character_list AS (
-    INSERT INTO ludobaum.attribute_list (name)
-        VALUES('Character')
+    INSERT INTO ludobaum.attribute_list (name, user_id)
+        SELECT 'Character', user_1.id
+        FROM user_1
     RETURNING id AS id
 ), npc AS (
     INSERT INTO ludobaum.attribute_list_element(list_id, text, sort_order)
