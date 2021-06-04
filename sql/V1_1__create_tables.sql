@@ -28,6 +28,7 @@ CREATE TABLE ludobaum.node_connection(
     head_node_id INT NOT NULL,
 
     PRIMARY KEY(id),
+    UNIQUE(tail_node_id, head_node_id),
     CONSTRAINT fk_tail_node
         FOREIGN KEY(tail_node_id)
             REFERENCES ludobaum.node(id) ON DELETE CASCADE,
