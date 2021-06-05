@@ -39,7 +39,7 @@ CREATE TABLE ludobaum.node_connection(
 
 CREATE TABLE ludobaum.attribute_list(
     id SERIAL UNIQUE,
-    name VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
     user_id INT NOT NULL,
 
     PRIMARY KEY(id),
@@ -66,7 +66,7 @@ CREATE TABLE ludobaum.node_attribute(
     node_id INT NOT NULL,
     attribute_type VARCHAR(31) NOT NULL, 
     sort_order INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
     text VARCHAR(4095),
     number INT,
     list_id INT,
