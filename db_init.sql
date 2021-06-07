@@ -1,4 +1,4 @@
 -- database setup on postgres connection
-CREATE USER ludobaum;
+CREATE USER ludosystems;
 
-CREATE DATABASE ludobaum WITH OWNER ludobaum;
+CREATE DATABASE ludosystems WITH OWNER ludosystems;

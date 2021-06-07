@@ -1,6 +1,6 @@
-DROP TABLE ludobaum.node_attribute;
-DROP TABLE ludobaum.attribute_list_element;
-DROP TABLE ludobaum.attribute_list;
-DROP TABLE ludobaum.node_connection;
-DROP TABLE ludobaum.node;
-DROP TABLE ludobaum.ludobaum_user;
+DROP TABLE ludosystems.node_attribute;
+DROP TABLE ludosystems.attribute_list_element;
+DROP TABLE ludosystems.attribute_list;
+DROP TABLE ludosystems.node_connection;
+DROP TABLE ludosystems.node;
+DROP TABLE ludosystems.ludosystems_user;

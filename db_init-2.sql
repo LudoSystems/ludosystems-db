@@ -1,4 +1,4 @@
--- /c to ludobaum and run this
-CREATE SCHEMA ludobaum AUTHORIZATION ludobaum;
+-- \c to ludosystems and run this
+CREATE SCHEMA ludosystems AUTHORIZATION ludosystems;
 
-GRANT ALL PRIVILEGES ON DATABASE ludobaum TO ludobaum;
+GRANT ALL PRIVILEGES ON DATABASE ludosystems TO ludosystems;
