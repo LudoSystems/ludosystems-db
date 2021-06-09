@@ -1,6 +1,6 @@
 # About
 
-These scripts are used to create a database for the Ludo.Systems project.
+These scripts are used to create a PostgreSQL database for the Ludo.Systems project.
 
 # Setup
 
